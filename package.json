@@ -5,6 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fazril Ramadhan",
@@ -16,5 +17,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "mongoose-paginate-v2": "^1.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

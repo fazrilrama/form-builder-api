@@ -3,6 +3,8 @@ import AuthController from '../Controllers/AuthController.js'
 import MahasiswaController from '../Controllers/MahasiswaController.js'
 import jwtAuth from '../middleware/jwtAuth.js'
 import FormController from '../Controllers/FormController.js'
+import QuestionController from '../Controllers/QuestionController.js'
+import OptionController from '../Controllers/OptionController.js'
 
 const router = express.Router()
 
@@ -34,5 +36,16 @@ router.get('/form/:id', jwtAuth(), FormController.show);
 router.put('/form/update/:id', jwtAuth(), FormController.update);
 router.delete('/form/destroy/:id', jwtAuth(), FormController.destroy);
 router.get('/form', jwtAuth(), FormController.index);
+
+// Question
+router.post('/form/:id/questions', jwtAuth(), QuestionController.store);
+router.put('/form/:id/questions/:questionId', jwtAuth(), QuestionController.update);
+router.delete('/form/:id/questions/:questionId', jwtAuth(), QuestionController.destroy);
+router.get('/form/:id/questions', jwtAuth(), QuestionController.index);
+
+// Options
+router.post('/form/:id/questions/:questionId/option', jwtAuth(), OptionController.store);
+router.put('/form/:id/questions/:questionId/option/:optionId', jwtAuth(), OptionController.update);
+router.delete('/form/:id/questions/:questionId/option/:optionId', jwtAuth(), OptionController.destroy);
 
 export default router;
