@@ -10,7 +10,7 @@ class FormController {
             const page = parseInt(req.query.page) || 1
 
             const form = await Form.paginate({ userId: req.jwt.id }, { limit: limit, page: page })
-            if (!form) { throw { code: 404, message: 'FORM_NOT_FOUND' } }
+            if (!form) { throw { code: 404, message: 'FORM_NOT_FOUNDS' } }
 
             return res.status(200).json({
                 status: true,
