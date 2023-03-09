@@ -116,16 +116,17 @@ class FormController {
 
             const form = await Form.findOne({ _id: req.params.id })
             if (!form) { throw { code: 404, message: "FORM_NOT_FOUND" } }
-            // if (req.jwt.id != form.userId && form.public === false) {
-            //     const users = await User.findOne({ _id: req.jwt.id })
 
-            //     if (!form.invites.includes(users.email)) {
-            //         throw { code: 401, message: 'YOU_ARE_NOT_INVITED' }
-            //     }
-            // }
+            if (req.jwt.id != form.userId && form.public === false) {
+                const users = await User.findOne({ _id: req.jwt.id })
+                console.log(users);
+
+                if (!form.invites.includes(users.email)) {
+                    throw { code: 401, message: 'YOU_ARE_NOT_INVITED' }
+                }
+            }
 
             form.invites = [];
-
             return res.status(200).json({
                 status: true,
                 message: "SUCCESS_SHOW_TO_USERS",

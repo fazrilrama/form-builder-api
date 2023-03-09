@@ -41,6 +41,8 @@ class QuestionController {
 
             const form = await Form.findOneAndUpdate({ _id: req.params.id, userId: req.jwt.id }, { $push: { questions: newQuestion } }, { new: true })
 
+            console.log(req.jwt.id);
+
             if (!form) { throw { code: 400, message: 'FORM_UPDATE_FAILED' } }
 
             return res.status(200).json({

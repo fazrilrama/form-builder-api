@@ -36,7 +36,7 @@ router.get('/form/:id', jwtAuth(), FormController.show);
 router.put('/form/update/:id', jwtAuth(), FormController.update);
 router.delete('/form/destroy/:id', jwtAuth(), FormController.destroy);
 router.get('/form', jwtAuth(), FormController.index);
-router.get('/form/:id/users', FormController.showToUser);
+router.get('/form/:id/users', jwtAuth(), FormController.showToUser);
 
 // Question
 router.post('/form/:id/questions', jwtAuth(), QuestionController.store);

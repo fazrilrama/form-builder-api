@@ -15,7 +15,7 @@ app.use('/api', apiRouter);
 // 404 Not Found
 app.use((req, res) => {
     res.status(404).json({ message: '404_NOT_FOUND' });
-})
+});
 
 // MongoDB Connection
 connection()
